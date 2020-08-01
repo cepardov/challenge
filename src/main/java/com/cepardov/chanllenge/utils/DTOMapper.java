@@ -5,6 +5,8 @@ import com.cepardov.chanllenge.dto.UserDTO;
 import com.cepardov.chanllenge.entity.Phone;
 import com.cepardov.chanllenge.entity.User;
 
+import java.util.stream.Collectors;
+
 /**
  * @author cepardov on 01-08-20
  */
@@ -20,7 +22,7 @@ public class DTOMapper {
         user.setPassword(userDTO.getPassword());
         user.setLastLogin(userDTO.getLastLogin());
         user.setActive(userDTO.isActive());
-        user.setPhones(user.getPhones());
+        user.setPhones(userDTO.getPhones().stream().map(DTOMapper::toEntity).collect(Collectors.toSet()));
     }
 
     public static User toEntity(UserDTO userDTO) {
