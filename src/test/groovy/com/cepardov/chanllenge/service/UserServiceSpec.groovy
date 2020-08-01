@@ -13,11 +13,10 @@ import spock.lang.Specification
 class UserServiceSpec extends Specification {
 
     UserServiceImpl userService
-    UserRepository userRepository
+    UserRepository userRepository = Stub(UserRepository)
 
     def setup(){
-        userRepository = Stub(UserRepository)
-        userService = new UserServiceImpl(userRepository: userRepository)
+        userService = new UserServiceImpl(userRepository)
     }
 
     def "FindAll"() {
