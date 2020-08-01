@@ -1,11 +1,13 @@
 package com.cepardov.chanllenge.dto;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @author cepardov on 31-07-20
  */
-@Data
+@Getter
+@Setter
 public class PhoneDTO {
 
     private Long id;

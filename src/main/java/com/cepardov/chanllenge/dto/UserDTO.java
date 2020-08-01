@@ -1,16 +1,16 @@
 package com.cepardov.chanllenge.dto;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import java.util.Date;
 import java.util.Set;
 
 /**
  * @author cepardov on 31-07-20
  */
-@Data
+@Getter
+@Setter
 public class UserDTO {
 
     private Long id;
