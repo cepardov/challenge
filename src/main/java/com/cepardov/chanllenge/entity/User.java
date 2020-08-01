@@ -1,5 +1,6 @@
 package com.cepardov.chanllenge.entity;
 
+import com.cepardov.chanllenge.dto.UserDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -50,5 +51,18 @@ public class User {
         this.modified = new Date();
     }
 
+    public UserDTO toDTO() {
+        UserDTO userDTO =  new UserDTO();
+        userDTO.setId(this.getId());
+        userDTO.setName(this.getName());
+        userDTO.setPassword(this.getPassword());
+        userDTO.setEmail(this.getEmail());
+        userDTO.setCreated(this.getCreated());
+        userDTO.setModified(this.getModified());
+        userDTO.setLastLogin(this.getLastLogin());
+        userDTO.setActive(this.isActive);
+        userDTO.setPhones(null);
+        return userDTO;
+    }
 
 }
