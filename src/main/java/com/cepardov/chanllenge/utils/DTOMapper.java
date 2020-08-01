@@ -1,6 +1,8 @@
 package com.cepardov.chanllenge.utils;
 
+import com.cepardov.chanllenge.dto.PhoneDTO;
 import com.cepardov.chanllenge.dto.UserDTO;
+import com.cepardov.chanllenge.entity.Phone;
 import com.cepardov.chanllenge.entity.User;
 
 /**
@@ -8,7 +10,7 @@ import com.cepardov.chanllenge.entity.User;
  */
 public class DTOMapper {
 
-    public DTOMapper() {
+    private DTOMapper() {
     }
 
     private static void toEntity(UserDTO userDTO, User user){
@@ -18,12 +20,26 @@ public class DTOMapper {
         user.setPassword(userDTO.getPassword());
         user.setLastLogin(userDTO.getLastLogin());
         user.setActive(userDTO.isActive());
-        user.setPhones(null);
+        user.setPhones(user.getPhones());
     }
 
     public static User toEntity(UserDTO userDTO) {
         User user = new User();
         toEntity(userDTO, user);
         return user;
+    }
+
+    private static void toEntity(PhoneDTO phoneDTO, Phone phone){
+        phone.setId(phoneDTO.getId());
+        phone.setNumber(phoneDTO.getNumber());
+        phone.setCitycode(phoneDTO.getCitycode());
+        phone.setCountrycode(phoneDTO.getCountrycode());
+        phone.setUser(phone.getUser());
+    }
+
+    public static Phone toEntity(PhoneDTO phoneDTO){
+        Phone phone = new Phone();
+        toEntity(phoneDTO, phone);
+        return phone;
     }
 }

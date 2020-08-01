@@ -1,5 +1,6 @@
 package com.cepardov.chanllenge.entity;
 
+import com.cepardov.chanllenge.dto.PhoneDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,5 +30,12 @@ public class Phone {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-
+    public PhoneDTO toDTO(){
+        PhoneDTO phoneDTO = new PhoneDTO();
+        phoneDTO.setId(this.getId());
+        phoneDTO.setNumber(this.getNumber());
+        phoneDTO.setCitycode(this.getCitycode());
+        phoneDTO.setCountrycode(this.getCountrycode());
+        return phoneDTO;
+    }
 }
