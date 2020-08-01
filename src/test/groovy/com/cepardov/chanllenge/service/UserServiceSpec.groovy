@@ -21,12 +21,13 @@ class UserServiceSpec extends Specification {
 
     def "FindAll"() {
         given:
-        List<UserDTO> users = []
+        List<User> users = userListData()
         userRepository.findAll() >> users
         when:
         def res = userService.findAll()
         then:
         res instanceof List<UserDTO>
+        res.size() == 3
     }
 
     def "Save"() {
@@ -80,5 +81,13 @@ class UserServiceSpec extends Specification {
         userDTO.password = "password"
         userDTO.phones = []
         return userDTO
+    }
+
+    List<User> userListData(){
+        List<User> list = new ArrayList<>()
+        3.times {
+            list.add(new User(it, "","","", new Date(), new Date(), new Date(), true, [] as Set<Phone>))
+        }
+        return list
     }
 }

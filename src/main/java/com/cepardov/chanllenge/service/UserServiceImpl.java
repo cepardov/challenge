@@ -5,7 +5,6 @@ import com.cepardov.chanllenge.entity.User;
 import com.cepardov.chanllenge.repository.UserRepository;
 import com.cepardov.chanllenge.utils.DTOMapper;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,8 +1,6 @@
 package com.cepardov.chanllenge.entity;
 
-import com.cepardov.chanllenge.dto.PhoneDTO;
 import com.cepardov.chanllenge.dto.UserDTO;
-import com.cepardov.chanllenge.utils.DTOMapper;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
