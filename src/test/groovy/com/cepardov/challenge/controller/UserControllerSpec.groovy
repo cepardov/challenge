@@ -1,6 +1,6 @@
-package com.cepardov.chanllenge.controller
+package com.cepardov.challenge.controller
 
-import com.cepardov.challenge.controller.UserController
+
 import com.cepardov.challenge.dto.PhoneDTO
 import com.cepardov.challenge.dto.UserDTO
 import com.cepardov.challenge.service.UserService

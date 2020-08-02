@@ -21,9 +21,10 @@ public class UserHandler {
     private static final Logger logger = LoggerFactory.getLogger(UserHandler.class);
 
     @ExceptionHandler(DataIntegrityViolationException.class)
-    public ResponseEntity<Object> test(DataIntegrityViolationException e) {
+    public ResponseEntity<Object> entityViolations(DataIntegrityViolationException e) {
+        logger.error(e.getMessage(), e);
         Map<String, Object> response = new HashMap<>();
-        response.put("message", "El email ingresado ya existe");
+        response.put("message", "El correo ya registrado");
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
     @ExceptionHandler({TransactionSystemException.class})

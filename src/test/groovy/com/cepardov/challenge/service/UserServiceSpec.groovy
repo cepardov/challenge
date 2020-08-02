@@ -1,10 +1,9 @@
-package com.cepardov.chanllenge.service
+package com.cepardov.challenge.service
 
 import com.cepardov.challenge.dto.UserDTO
 import com.cepardov.challenge.entity.Phone
 import com.cepardov.challenge.entity.User
 import com.cepardov.challenge.repository.UserRepository
-import com.cepardov.challenge.service.UserServiceImpl
 import spock.lang.Specification
 
 /**
