@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import java.util.Date;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -25,8 +27,14 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotEmpty
     private String name;
+
+    @NotEmpty
     private String password;
+
+    @Email
+    @NotEmpty
     private String email;
 
     @Temporal(TemporalType.DATE)

@@ -6,6 +6,7 @@ import com.cepardov.challenge.repository.UserRepository;
 import com.cepardov.challenge.utils.DTOMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,6 +28,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public UserDTO save(UserDTO userDTO) {
         User user = DTOMapper.toEntity(userDTO);
         return userRepository.save(user).toDTO();
