@@ -1,10 +1,10 @@
 package com.cepardov.chanllenge.service
 
-import com.cepardov.chanllenge.dto.UserDTO
-import com.cepardov.chanllenge.entity.Phone
-import com.cepardov.chanllenge.entity.User
-import com.cepardov.chanllenge.repository.UserRepository
-import com.cepardov.chanllenge.utils.DTOMapper
+import com.cepardov.challenge.dto.UserDTO
+import com.cepardov.challenge.entity.Phone
+import com.cepardov.challenge.entity.User
+import com.cepardov.challenge.repository.UserRepository
+import com.cepardov.challenge.service.UserServiceImpl
 import spock.lang.Specification
 
 /**
@@ -33,7 +33,7 @@ class UserServiceSpec extends Specification {
     def "Save"() {
         given:
         UserDTO userDTO = userDTOData()
-        userRepository.save(_) >> DTOMapper.toEntity(userDTO)
+        userRepository.save(_) >> userData()
         when:
         def res = userService.save(userDTO)
         then:
@@ -71,7 +71,7 @@ class UserServiceSpec extends Specification {
     }
 
     User userEntityData(){
-        new User(1, "","","", new Date(), new Date(), new Date(), true, [] as Set<Phone>)
+         return new User(1, "","","", new Date(), new Date(), new Date(), true, [] as Set<Phone>)
     }
 
     UserDTO userDTOData(){
@@ -81,6 +81,10 @@ class UserServiceSpec extends Specification {
         userDTO.password = "password"
         userDTO.phones = []
         return userDTO
+    }
+
+    User userData(){
+        new User(1, "","","", new Date(), new Date(), new Date(), true, [] as Set<Phone>)
     }
 
     List<User> userListData(){
