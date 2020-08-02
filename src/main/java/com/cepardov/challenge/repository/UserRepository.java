@@ -1,6 +1,6 @@
-package com.cepardov.chanllenge.repository;
+package com.cepardov.challenge.repository;
 
-import com.cepardov.chanllenge.entity.User;
+import com.cepardov.challenge.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

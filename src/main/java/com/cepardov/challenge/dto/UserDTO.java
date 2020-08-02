@@ -1,4 +1,4 @@
-package com.cepardov.chanllenge.dto;
+package com.cepardov.challenge.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

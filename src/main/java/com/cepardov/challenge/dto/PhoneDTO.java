@@ -1,4 +1,4 @@
-package com.cepardov.chanllenge.dto;
+package com.cepardov.challenge.dto;
 
 import lombok.Getter;
 import lombok.Setter;

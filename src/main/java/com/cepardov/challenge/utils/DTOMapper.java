@@ -1,9 +1,9 @@
-package com.cepardov.chanllenge.utils;
+package com.cepardov.challenge.utils;
 
-import com.cepardov.chanllenge.dto.PhoneDTO;
-import com.cepardov.chanllenge.dto.UserDTO;
-import com.cepardov.chanllenge.entity.Phone;
-import com.cepardov.chanllenge.entity.User;
+import com.cepardov.challenge.dto.PhoneDTO;
+import com.cepardov.challenge.dto.UserDTO;
+import com.cepardov.challenge.entity.Phone;
+import com.cepardov.challenge.entity.User;
 
 import java.util.stream.Collectors;
 

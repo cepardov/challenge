@@ -1,9 +1,9 @@
-package com.cepardov.chanllenge.service;
+package com.cepardov.challenge.service;
 
-import com.cepardov.chanllenge.dto.UserDTO;
-import com.cepardov.chanllenge.entity.User;
-import com.cepardov.chanllenge.repository.UserRepository;
-import com.cepardov.chanllenge.utils.DTOMapper;
+import com.cepardov.challenge.dto.UserDTO;
+import com.cepardov.challenge.entity.User;
+import com.cepardov.challenge.repository.UserRepository;
+import com.cepardov.challenge.utils.DTOMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

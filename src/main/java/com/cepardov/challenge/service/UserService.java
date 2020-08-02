@@ -1,6 +1,6 @@
-package com.cepardov.chanllenge.service;
+package com.cepardov.challenge.service;
 
-import com.cepardov.chanllenge.dto.UserDTO;
+import com.cepardov.challenge.dto.UserDTO;
 
 import java.util.List;
 
