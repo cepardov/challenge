@@ -1,6 +1,7 @@
 package com.cepardov.challenge.entity;
 
 import com.cepardov.challenge.dto.UserDTO;
+import com.cepardov.challenge.validator.Password;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,6 +32,7 @@ public class User {
     private String name;
 
     @NotEmpty
+    @Password
     private String password;
 
     @Email
