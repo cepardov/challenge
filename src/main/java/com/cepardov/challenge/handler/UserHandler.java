@@ -2,6 +2,7 @@ package com.cepardov.challenge.handler;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.TransactionSystemException;
@@ -19,6 +20,12 @@ import java.util.*;
 public class UserHandler {
     private static final Logger logger = LoggerFactory.getLogger(UserHandler.class);
 
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<Object> test(DataIntegrityViolationException e) {
+        Map<String, Object> response = new HashMap<>();
+        response.put("message", "El email ingresado ya existe");
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
     @ExceptionHandler({TransactionSystemException.class})
     public ResponseEntity<Object> validationExceptions(TransactionSystemException ex){
         Map<String, Object> response = new HashMap<>();
