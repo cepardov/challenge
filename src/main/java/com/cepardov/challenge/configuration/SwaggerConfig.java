@@ -27,9 +27,6 @@ public class SwaggerConfig {
         return new ApiInfoBuilder().title("RESTFull API")
                 .description("Servicio REST API")
                 .contact(new Contact("Cristian Pardo", "", "cepardov@gmail.com"))
-                .license("Apache 2.0")
-                .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html")
-                .version("0.0.1")
                 .build();
     }
 }

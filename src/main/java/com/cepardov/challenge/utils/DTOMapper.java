@@ -5,6 +5,7 @@ import com.cepardov.challenge.dto.UserDTO;
 import com.cepardov.challenge.entity.Phone;
 import com.cepardov.challenge.entity.User;
 
+import java.util.Collections;
 import java.util.stream.Collectors;
 
 /**
@@ -22,7 +23,10 @@ public class DTOMapper {
         user.setPassword(userDTO.getPassword());
         user.setLastLogin(userDTO.getLastLogin());
         user.setActive(userDTO.isActive());
-        user.setPhones(userDTO.getPhones().stream().map(DTOMapper::toEntity).collect(Collectors.toSet()));
+        user.setPhones(
+                userDTO.getPhones() == null ? Collections.emptySet():
+                        userDTO.getPhones().stream().map(DTOMapper::toEntity).collect(Collectors.toSet())
+        );
     }
 
     public static User toEntity(UserDTO userDTO) {
