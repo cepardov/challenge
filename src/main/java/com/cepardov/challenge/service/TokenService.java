@@ -17,8 +17,6 @@ import java.util.Date;
 import java.util.Map;
 import java.util.Optional;
 
-import static com.cepardov.challenge.configuration.Constants.HEADER_AUTHORIZACION_KEY;
-
 /**
  * @author cepardov on 02-08-20
  */
@@ -33,7 +31,7 @@ public class TokenService {
 
     public String resolveToken(HttpServletRequest req) {
         String token = null;
-        final String bearerToken = req.getHeader(HEADER_AUTHORIZACION_KEY);
+        final String bearerToken = req.getHeader("Authorization");
         if (bearerToken != null) {
             token = bearerToken;
         }
