@@ -49,7 +49,7 @@ public class TokenService {
         if (authentication != null && details.get("user") != null) {
             UserDTO userDTO = (UserDTO) details.get("user");
             userDTO.setLastLogin(new Date());
-            userService.save(userDTO);
+            userService.update(userDTO);
         }
         return authentication;
     }

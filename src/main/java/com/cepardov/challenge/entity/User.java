@@ -76,7 +76,9 @@ public class User {
         userDTO.setModified(this.getModified());
         userDTO.setLastLogin(this.getLastLogin());
         userDTO.setActive(this.isActive());
-        userDTO.setPhones(this.getPhones().stream().map(Phone::toDTO).collect(Collectors.toSet()));
+        userDTO.setPhones(this.getPhones().stream()
+                .map(Phone::toDTO)
+                .collect(Collectors.toSet()));
         return userDTO;
     }
 

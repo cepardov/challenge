@@ -13,9 +13,10 @@ class UserServiceSpec extends Specification {
 
     UserServiceImpl userService
     UserRepository userRepository = Stub(UserRepository)
+    PasswordService passwordService = Stub(PasswordService)
 
     def setup(){
-        userService = new UserServiceImpl(userRepository)
+        userService = new UserServiceImpl(userRepository, passwordService)
     }
 
     def "FindAll"() {
@@ -35,6 +36,16 @@ class UserServiceSpec extends Specification {
         userRepository.save(_) >> userData()
         when:
         def res = userService.save(userDTO)
+        then:
+        res instanceof UserDTO
+    }
+
+    def "Update"() {
+        given:
+        UserDTO userDTO = userDTOData()
+        userRepository.save(_) >> userData()
+        when:
+        def res = userService.update(userDTO)
         then:
         res instanceof UserDTO
     }
@@ -70,7 +81,7 @@ class UserServiceSpec extends Specification {
     }
 
     User userEntityData(){
-         return new User(1, "","","", new Date(), new Date(), new Date(), true, [] as Set<Phone>)
+         return new User(1, "","","","", new Date(), new Date(), new Date(), true, [] as Set<Phone>)
     }
 
     UserDTO userDTOData(){
@@ -83,13 +94,13 @@ class UserServiceSpec extends Specification {
     }
 
     User userData(){
-        new User(1, "","","", new Date(), new Date(), new Date(), true, [] as Set<Phone>)
+        new User(1, "","","", "", new Date(), new Date(), new Date(), true, [] as Set<Phone>)
     }
 
     List<User> userListData(){
         List<User> list = new ArrayList<>()
         3.times {
-            list.add(new User(it, "","","", new Date(), new Date(), new Date(), true, [] as Set<Phone>))
+            list.add(new User(it, "","","","", new Date(), new Date(), new Date(), true, [] as Set<Phone>))
         }
         return list
     }

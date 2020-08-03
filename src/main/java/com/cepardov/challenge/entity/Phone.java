@@ -36,7 +36,6 @@ public class Phone {
         phoneDTO.setNumber(this.getNumber());
         phoneDTO.setCitycode(this.getCitycode());
         phoneDTO.setCountrycode(this.getCountrycode());
-        phoneDTO.setUserDTO(this.getUser().toDTO());
         return phoneDTO;
     }
 }

@@ -53,6 +53,12 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
+    public UserDTO update(UserDTO userDTO) {
+        User user = DTOMapper.toEntity(userDTO);
+        return userRepository.save(user).toDTO();
+    }
+
+    @Override
     public UserDTO findById(Long id) {
         User user = userRepository.findById(id).orElse(new User());
         return user.toDTO();

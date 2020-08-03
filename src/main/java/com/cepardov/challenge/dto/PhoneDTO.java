@@ -14,5 +14,4 @@ public class PhoneDTO {
     private Integer number;
     private Integer citycode;
     private Integer countrycode;
-    private UserDTO userDTO;
 }

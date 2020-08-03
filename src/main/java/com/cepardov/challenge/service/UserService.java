@@ -14,6 +14,7 @@ public interface UserService {
 
     List<UserDTO> findAll();
     UserDTO save(UserDTO userDTO);
+    UserDTO update(UserDTO userDTO);
     UserDTO findById(Long id);
     void delete(UserDTO userDTO);
     void deleteById(Long id);
