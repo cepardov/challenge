@@ -40,6 +40,8 @@ public class User {
     @Column(unique = true)
     private String email;
 
+    private String token;
+
     @Temporal(TemporalType.DATE)
     private Date created;
 
@@ -50,7 +52,7 @@ public class User {
     private Date lastLogin;
     private boolean isActive = true;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
     private Set<Phone> phones;
 
     @PrePersist
@@ -69,6 +71,7 @@ public class User {
         userDTO.setName(this.getName());
         userDTO.setPassword(this.getPassword());
         userDTO.setEmail(this.getEmail());
+        userDTO.setToken(this.getToken());
         userDTO.setCreated(this.getCreated());
         userDTO.setModified(this.getModified());
         userDTO.setLastLogin(this.getLastLogin());

@@ -21,6 +21,7 @@ public class UserDTO {
     private String name;
     private String password;
     private String email;
+    private String token;
     private Date created;
     private Date modified;
     private Date lastLogin;

@@ -20,6 +20,8 @@ public class DTOMapper {
         user.setId(userDTO.getId());
         user.setName(userDTO.getName());
         user.setEmail(userDTO.getEmail());
+        user.setToken(userDTO.getToken());
+        user.setCreated(userDTO.getCreated());
         user.setPassword(userDTO.getPassword());
         user.setLastLogin(userDTO.getLastLogin());
         user.setActive(userDTO.isActive());
