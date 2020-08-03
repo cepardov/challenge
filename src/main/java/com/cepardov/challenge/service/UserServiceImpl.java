@@ -40,7 +40,9 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Override
     public List<UserDTO> findAll() {
         List<User> users = userRepository.findAll();
-        return users.stream().map(User::toDTO).collect(Collectors.toList());
+        return users.stream()
+                .map(User::toDTO)
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -99,7 +101,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     private String createToken(String username) {
         Claims claims = Jwts.claims().setSubject(username);
-        Date expiration = Date.from(LocalDateTime.now(UTC).plusMinutes(5).toInstant(UTC));
+        Date expiration = Date.from(LocalDateTime.now(UTC).plusMinutes(60).toInstant(UTC));
         return Jwts.builder()
                 .setClaims(claims)
                 .setExpiration(expiration)

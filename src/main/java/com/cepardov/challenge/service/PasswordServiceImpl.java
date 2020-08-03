@@ -14,7 +14,7 @@ public class PasswordServiceImpl implements PasswordService {
     }
 
     @Override
-    public boolean verifyHash(String password, String hash) {
-        return BCrypt.checkpw(password, hash);
+    public boolean verifyHash(String plainPassword, String savedPasword) {
+        return BCrypt.checkpw(plainPassword, savedPasword);
     }
 }

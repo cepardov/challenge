@@ -23,7 +23,7 @@ class UserControllerSpec extends Specification {
         given:
         List<UserDTO> users = new ArrayList<>()
         50.times {
-            users.add(new UserDTO(it, "","","", new Date(), new Date(), new Date(), true, [] as Set<PhoneDTO>))
+            users.add(new UserDTO(it, "","","","", new Date(), new Date(), new Date(), true, [] as Set<PhoneDTO>))
         }
         userService.findAll() >> users
         when:
@@ -36,7 +36,7 @@ class UserControllerSpec extends Specification {
 
     def "get User details for id"() {
         given:
-        UserDTO user = new UserDTO(1, "","","", new Date(), new Date(), new Date(), true, [] as Set<PhoneDTO>)
+        UserDTO user = new UserDTO(1, "","","","", new Date(), new Date(), new Date(), true, [] as Set<PhoneDTO>)
         userService.findById(_ as Long) >> user
         when:
         def res = userController.getUserById(1)
@@ -49,8 +49,8 @@ class UserControllerSpec extends Specification {
 
     def "Save user correct fields"() {
         given:
-        UserDTO userFields = new UserDTO(0, "Juan Rodriguez","Hunter22","juan@rodriguez.com", null, null, null, true, [] as Set<PhoneDTO>)
-        UserDTO userSaved = new UserDTO(1, "Juan Rodriguez","Hunter22","juan@rodriguez.com", new Date(), null, null, true, [] as Set<PhoneDTO>)
+        UserDTO userFields = new UserDTO(0, "Juan Rodriguez","Hunter22","juan@rodriguez.com",null, null, null, null, true, [] as Set<PhoneDTO>)
+        UserDTO userSaved = new UserDTO(1, "Juan Rodriguez","Hunter22","juan@rodriguez.com","", new Date(), null, null, true, [] as Set<PhoneDTO>)
         userService.save(_ as UserDTO) >> userSaved
         when:
         def res = userController.save(userFields)
@@ -63,8 +63,8 @@ class UserControllerSpec extends Specification {
 
     def "Update user correct fields"() {
         given:
-        UserDTO userFields = new UserDTO(1, "Juan Rodriguez","Hunter22","juan@rodriguez.com", new Date(), null, null, true, [] as Set<PhoneDTO>)
-        UserDTO userUpdated = new UserDTO(1, "Juan Rodriguez","Hunter22","juan@rodriguez.com", new Date(), new Date(), null, true, [] as Set<PhoneDTO>)
+        UserDTO userFields = new UserDTO(1, "Juan Rodriguez","Hunter22","juan@rodriguez.com","", new Date(), null, null, true, [] as Set<PhoneDTO>)
+        UserDTO userUpdated = new UserDTO(1, "Juan Rodriguez","Hunter22","juan@rodriguez.com","", new Date(), new Date(), null, true, [] as Set<PhoneDTO>)
         userService.save(_ as UserDTO) >> userUpdated
         when:
         def res = userController.update(userFields)
@@ -77,7 +77,7 @@ class UserControllerSpec extends Specification {
 
     def "Delete user use DTO"() {
         given:
-        UserDTO user = new UserDTO(1, "Juan Rodriguez","Hunter22","juan@rodriguez.com", new Date(), new Date(), null, true, [] as Set<PhoneDTO>)
+        UserDTO user = new UserDTO(1, "Juan Rodriguez","Hunter22","juan@rodriguez.com","", new Date(), new Date(), null, true, [] as Set<PhoneDTO>)
         userService.delete(_ as UserDTO) >> null
         when:
         def res = userController.delete(user)

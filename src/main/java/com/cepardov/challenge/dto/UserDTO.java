@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -26,5 +27,5 @@ public class UserDTO {
     private Date modified;
     private Date lastLogin;
     private boolean isActive;
-    private Set<PhoneDTO> phones;
+    private Set<PhoneDTO> phones = new HashSet<>();
 }

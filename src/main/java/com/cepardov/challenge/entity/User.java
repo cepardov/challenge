@@ -11,6 +11,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -53,7 +54,7 @@ public class User {
     private boolean isActive = true;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
-    private Set<Phone> phones;
+    private Set<Phone> phones = new HashSet<>();
 
     @PrePersist
     private void prePersist(){
