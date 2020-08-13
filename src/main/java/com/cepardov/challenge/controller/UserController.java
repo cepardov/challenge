@@ -24,25 +24,25 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<Object> list(){
+    public ResponseEntity<List<UserDTO>> list(){
         List<UserDTO> users = userService.findAll();
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Object> getUserById(@PathVariable("id") Long id){
+    public ResponseEntity<UserDTO> getUserById(@PathVariable("id") Long id){
         UserDTO user = userService.findById(id);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<Object> save(@RequestBody UserDTO userDTO){
+    public ResponseEntity<UserDTO> save(@RequestBody UserDTO userDTO){
         UserDTO userSaved = userService.save(userDTO);
         return new ResponseEntity<>(userSaved, HttpStatus.CREATED);
     }
 
     @PutMapping
-    public ResponseEntity<Object> update(@RequestBody UserDTO userDTO){
+    public ResponseEntity<UserDTO> update(@RequestBody UserDTO userDTO){
         UserDTO userUpdated = userService.update(userDTO);
         return new ResponseEntity<>(userUpdated, HttpStatus.OK);
     }
