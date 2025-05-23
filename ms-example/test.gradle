@@ -1,0 +1,69 @@
+def jacocoExcludes = [
+        'cl/cepardov/backend/Application.**',
+        'cl/cepardov/backend/configuration/WebClientConfiguration.**'
+]
+
+jacocoTestReport {
+    getExecutionData().from(fileTree(dir: "${layout.getBuildDirectory().get()}/jacoco", include: '**/*.exec'))
+    reports {
+        xml.required = false
+        csv.required = false
+        html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
+    }
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it, includes: filesChanged(), exclude: jacocoExcludes)
+        }))
+    }
+}
+
+jacocoTestCoverageVerification {
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it, includes: filesChanged(), exclude: jacocoExcludes)
+        }))
+    }
+    violationRules {
+        rule {
+            enabled = true
+            limit {
+                counter = 'BRANCH'
+                value = 'COVEREDRATIO'
+                minimum = 0.90
+            }
+        }
+        rule {
+            enabled = true
+            limit {
+                counter = 'LINE'
+                value = 'COVEREDRATIO'
+                minimum = 0.90
+            }
+        }
+
+    }
+}
+
+jacocoTestReport {
+    doLast {
+        println "Jacoco report generated at: file://${layout.buildDirectory.get()}/jacocoHtml/index.html"
+    }
+    dependsOn test
+}
+
+test {
+    jvmArgs = [
+            '-Xshare:off',
+            '-XX:+EnableDynamicAgentLoading'
+    ]
+    useJUnitPlatform()
+    finalizedBy jacocoTestReport
+}
+
+static List<String> filesChanged() {
+    def changedFiles = 'git diff --name-only --diff-filter=ACM HEAD'.execute().text.split("\n")
+    def javaFiles = changedFiles.findAll { it.endsWith('.java') }.toList()
+    return javaFiles.collect {
+        it.replace('app/src/main/java/', '').replace('.java', '.class')
+    }
+}

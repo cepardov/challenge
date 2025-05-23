@@ -1,0 +1,7 @@
+=============================================================================
+Application Name: ${spring.application.name}
+PORT: ${server.port:8080}
+SPRING BOOT: ${spring-boot.version}
+JAVA: ${java.version}
+OS: ${os.name} ${os.version} ${os.arch}
+=============================================================================

@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: Application Name
+  output:
+    ansi:
+      enabled: DETECT
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info,health
+
+logging:
+  pattern:
+    console: "%d{dd-MM-yy HH:mm:ss.S} [%-5level][%-35logger{35}]: %msg%n"
+  level:
+    ROOT: WARN
