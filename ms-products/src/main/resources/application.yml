@@ -1,19 +1,16 @@
 spring:
   application:
     name: ms-products
+  profiles:
+    active: develop
+  cloud:
+    config:
+      fail-fast: true
   output:
     ansi:
       enabled: DETECT
 
-management:
-  endpoints:
-    web:
-      exposure:
-        include: info,health
+spring.config.import: configserver:${MS_CONF:http://ms-configserver:8080}
 
-logging:
-  pattern:
-    console: "%d{dd-MM-yy HH:mm:ss.S} [%-5level][%-35logger{35}]: %msg%n"
-  level:
-    ROOT: WARN
-    com.globallogic: DEBUG
+server:
+  port: ${PORT:8080}

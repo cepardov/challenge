@@ -6,8 +6,6 @@ plugins {
     id 'jacoco'
 }
 
-apply from: 'test.gradle'
-
 group = 'com.globallogic'
 version = '1.0.0'
 

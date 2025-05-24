@@ -1,0 +1,18 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="ms-configserver" type="Application" factoryName="Application">
+    <envs>
+      <env name="PORT" value="8080" />
+    </envs>
+    <option name="MAIN_CLASS_NAME" value="com.globallogic.products.Application" />
+    <module name="challenge.ms-configserver.main" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="com.globallogic.products.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

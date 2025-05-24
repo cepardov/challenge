@@ -1,0 +1,19 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="ms-products" type="Application" factoryName="Application">
+    <envs>
+      <env name="MS_CONF" value="http://localhost:8080" />
+      <env name="PORT" value="8081" />
+    </envs>
+    <option name="MAIN_CLASS_NAME" value="com.globallogic.products.Application" />
+    <module name="challenge.ms-products.main" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="com.globallogic.products.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
