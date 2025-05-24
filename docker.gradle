@@ -1,23 +1,10 @@
 def podmanComposePath = System.getenv('PODMAN_COMPOSE_PATH') ?: 'podman-compose'
 
-tasks.register('podmanUpAll') {
-    dependsOn subprojects.collect { ":${it.name}:podmanUp" }
+tasks.register('podmanUpAll', Exec) {
+    dependsOn subprojects.collect { ":${it.name}:bootJar" }
+    commandLine podmanComposePath, 'up', '--build', '--detach'
 }
 
-tasks.register('podmanDownAll') {
-    dependsOn subprojects.collect { ":${it.name}:podmanDown" }
-}
-
-subprojects {
-
-    tasks.register('podmanUp', Exec) {
-        dependsOn bootJar
-        workingDir "${project.projectDir}"
-        commandLine podmanComposePath, 'up', '--build', '--detach'
-    }
-
-    tasks.register('podmanDown', Exec) {
-        workingDir "${project.projectDir}"
-        commandLine podmanComposePath, 'down'
-    }
+tasks.register('podmanDownAll', Exec) {
+    commandLine podmanComposePath, 'down'
 }
