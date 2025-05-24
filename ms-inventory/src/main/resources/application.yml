@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: ms-inventory
+  profiles:
+    active: develop
+  cloud:
+    config:
+      fail-fast: true
+  output:
+    ansi:
+      enabled: DETECT
+
+spring.config.import: configserver:${MS_CONF:http://ms-configserver:8080}
+
+server:
+  port: ${PORT:8080}

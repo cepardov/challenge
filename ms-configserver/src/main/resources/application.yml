@@ -1,6 +1,6 @@
 spring:
   application:
-    name: ms-products
+    name: ms-configserver
   cloud:
     config:
       server:
