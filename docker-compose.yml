@@ -58,7 +58,7 @@ services:
       context: ./ms-configserver
       dockerfile: Dockerfile
     ports:
-      - "8888:8888"
+      - "8080:8080"
     networks:
       - infra-network
 
