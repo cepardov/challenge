@@ -61,6 +61,7 @@ services:
       - "8080:8080"
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
+      start_period: 40s
       interval: 5s
       timeout: 3s
       retries: 10
@@ -76,7 +77,8 @@ services:
     networks:
       - infra-network
     depends_on:
-      - ms-configserver
+      ms-configserver:
+        condition: service_healthy
 
   ms-inventory:
     build:
@@ -87,7 +89,8 @@ services:
     networks:
       - infra-network
     depends_on:
-      - ms-configserver
+      ms-configserver:
+        condition: service_healthy
 
 networks:
   infra-network:
