@@ -1,6 +1,5 @@
 def jacocoExcludes = [
-        'cl/cepardov/backend/Application.**',
-        'cl/cepardov/backend/configuration/WebClientConfiguration.**'
+        'com/globallogic/products/Application.**'
 ]
 
 jacocoTestReport {

@@ -1,6 +1,6 @@
 spring:
   application:
-    name: Application Name
+    name: ms-products
   output:
     ansi:
       enabled: DETECT
@@ -16,3 +16,4 @@ logging:
     console: "%d{dd-MM-yy HH:mm:ss.S} [%-5level][%-35logger{35}]: %msg%n"
   level:
     ROOT: WARN
+    com.globallogic: DEBUG

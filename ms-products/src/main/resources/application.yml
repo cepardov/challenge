@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: ms-products
+  output:
+    ansi:
+      enabled: DETECT
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info,health
+
+logging:
+  pattern:
+    console: "%d{dd-MM-yy HH:mm:ss.S} [%-5level][%-35logger{35}]: %msg%n"
+  level:
+    ROOT: WARN
+    com.globallogic: DEBUG
