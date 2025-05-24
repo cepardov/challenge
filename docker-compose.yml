@@ -55,7 +55,7 @@ services:
 
   ms-configserver:
     build:
-      context: ./ms-products
+      context: ./ms-configserver
       dockerfile: Dockerfile
     ports:
       - "8888:8888"
