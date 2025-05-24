@@ -1,9 +1,9 @@
 tasks.register('podmanUpAll') {
-    dependsOn ':ms-products:podmanUp'
+    dependsOn subprojects.collect { ":${it.name}:podmanUp" }
 }
 
 tasks.register('podmanDownAll') {
-    dependsOn ':ms-products:podmanDown'
+    dependsOn subprojects.collect { ":${it.name}:podmanDown" }
 }
 
 subprojects {
@@ -11,11 +11,13 @@ subprojects {
     tasks.register('podmanUp', Exec) {
         dependsOn bootJar
         workingDir "${project.projectDir}"
+        commandLine 'pwd'
         //commandLine 'podman-compose', 'up', '--build', '--detach'
     }
 
     tasks.register('podmanDown', Exec) {
         workingDir "${project.projectDir}"
+        commandLine 'pwd'
         //commandLine 'podman-compose', 'down'
     }
 }

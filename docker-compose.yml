@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  ms-configserver:
+    build:
+      context: ./ms-products
+      dockerfile: Dockerfile
+    ports:
+      - "8888:8888"
+    networks:
+      - infra-network
+
+  ms-products:
+    build:
+      context: ./ms-products
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8080"
+    networks:
+      - infra-network
+    depends_on:
+      - ms-configserver
+
+networks:
+  infra-network:
+    driver: bridge
