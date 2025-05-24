@@ -1,0 +1,6 @@
+logging:
+  level:
+    ROOT: ERROR
+    com.globallogic: DEBUG
+  pattern:
+    console: "%d{dd-MM-yy HH:mm:ss.S} [%-5level][%-35logger{35}]: %msg%n"

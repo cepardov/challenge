@@ -1,6 +1,15 @@
 spring:
   application:
     name: ms-products
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/cepardov/challenge
+          search-paths: configurations
+          default-label: develop
+          clone-on-start: true
+          skipSslValidation: true
   output:
     ansi:
       enabled: DETECT
