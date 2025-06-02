@@ -63,6 +63,6 @@ static List<String> filesChanged() {
     def changedFiles = 'git diff --name-only --diff-filter=ACM HEAD'.execute().text.split("\n")
     def javaFiles = changedFiles.findAll { it.endsWith('.java') }.toList()
     return javaFiles.collect {
-        it.replace('app/src/main/java/', '').replace('.java', '.class')
+        it.replace('ms-products/src/main/java/', '').replace('.java', '.class')
     }
 }
