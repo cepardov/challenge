@@ -1,10 +1,11 @@
-package com.globallogic.products.infrastructure.datastore;
+package com.globallogic.products.infrastructure.repository;
 
 import com.globallogic.products.domain.model.Product;
 import com.globallogic.products.infrastructure.ProductRepository;
-import com.globallogic.products.infrastructure.datastore.entity.ProductEntity;
-import com.globallogic.products.infrastructure.datastore.mapper.ProductMapper;
+import com.globallogic.products.infrastructure.repository.entity.ProductEntity;
+import com.globallogic.products.infrastructure.repository.mapper.ProductMapper;
 import java.util.List;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
@@ -26,11 +27,16 @@ public class ProductMariaDbRepository implements ProductRepository {
     }
 
     @Override
-    public Product update(Product product) {
+    public Optional<Product> update(Product product) {
         log.debug("[update] Updating product: {}", product);
         ProductEntity productEntity = mapper.toEntity(product);
+        Optional<ProductEntity> savedProductEntityOptional = repository.findById(productEntity.getId());
+        if (savedProductEntityOptional.isEmpty()) {
+            log.debug("[update] Product not found: {}", productEntity.getId());
+            return Optional.empty();
+        }
         ProductEntity updatedProductEntity = repository.save(productEntity);
-        return mapper.toDomain(updatedProductEntity);
+        return Optional.of(mapper.toDomain(updatedProductEntity));
     }
 
     @Override
@@ -43,18 +49,16 @@ public class ProductMariaDbRepository implements ProductRepository {
     }
 
     @Override
-    public Product findById(Long id) {
+    public Optional<Product> findById(Long id) {
         log.debug("[findById] Finding product by id: {}", id);
-        ProductEntity productEntity = repository.findById(id).orElse(null);
-        if (productEntity != null) {
-            return mapper.toDomain(productEntity);
-        }
-        return null;
+        return repository.findById(id)
+                .map(mapper::toDomain);
     }
 
     @Override
-    public void deleteById(Long id) {
-        log.debug("[deleteById] Deleting product by id: {}", id);
-        repository.deleteById(id);
+    public void delete(Product product) {
+        log.debug("[delete] Delete product: {}", product);
+        ProductEntity productToDelete = mapper.toEntity(product);
+        repository.delete(productToDelete);
     }
 }

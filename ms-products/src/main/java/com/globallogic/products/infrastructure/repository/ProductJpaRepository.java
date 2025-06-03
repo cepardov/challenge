@@ -1,6 +1,6 @@
-package com.globallogic.products.infrastructure.datastore;
+package com.globallogic.products.infrastructure.repository;
 
-import com.globallogic.products.infrastructure.datastore.entity.ProductEntity;
+import com.globallogic.products.infrastructure.repository.entity.ProductEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
