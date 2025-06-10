@@ -41,7 +41,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Mono<Void> delete(Product product) {
-        log.debug("[delete] Product: {}", product);
+        log.debug("[deleteCaCa] Product: {}", product);
         return Mono.fromRunnable(() -> productRepository.delete(product))
                 .subscribeOn(Schedulers.boundedElastic())
                 .then();

@@ -2,7 +2,7 @@ app: ms-products
 
 spring:
   datasource:
-    url: jdbc:mariadb://${MARIADB_HOST:mariadb}:3306/products_db
+    url: jdbc:mariadb://${MARIADB_HOST:develop-mariadb.infraestructure.svc.k0s.cepardov.cl}:3306/products_db
     username: root
     password: admin
   jpa:

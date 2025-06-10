@@ -3,7 +3,6 @@
     <envs>
       <env name="MS_CONF" value="http://localhost:8080" />
       <env name="PORT" value="8081" />
-      <env name="MARIADB_HOST" value="192.168.1.72" />
     </envs>
     <option name="MAIN_CLASS_NAME" value="com.globallogic.products.Application" />
     <module name="challenge.ms-products.main" />
