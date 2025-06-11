@@ -1,6 +1,16 @@
 app: ms-products
 
 spring:
+  kafka:
+    bootstrap-servers: develop-kafka.infraestructure.svc.k0s.cepardov.cl:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.add.type.headers: true
+        pring.json.trusted.packages: "*"
+    topic:
+      name: audit-topic
   datasource:
     url: jdbc:mariadb://${MARIADB_HOST:develop-mariadb.infraestructure.svc.k0s.cepardov.cl}:3306/products_db
     username: application
