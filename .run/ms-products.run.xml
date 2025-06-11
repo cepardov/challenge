@@ -1,7 +1,8 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="ms-products" type="Application" factoryName="Application">
     <envs>
-      <env name="MS_CONF" value="http://localhost:8080" />
+      <env name="MS_CONF"
+           value="file:$PROJECT_DIR$/configurations/application.yml,file:$PROJECT_DIR$/configurations/ms-products-develop.yml"/>
       <env name="PORT" value="8081" />
     </envs>
     <option name="MAIN_CLASS_NAME" value="com.globallogic.products.Application" />
