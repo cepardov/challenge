@@ -1,7 +1,7 @@
 def jacocoExcludes = [
-        'com/globallogic/products/Application.**',
-        'com/globallogic/products/shared/dto/**',
-        'com/globallogic/products/shared/exception/**'
+        'com/globallogic/*/Application.**',
+        'com/globallogic/*/shared/dto/**',
+        'com/globallogic/*/shared/exception/**'
 ]
 
 jacocoTestReport {

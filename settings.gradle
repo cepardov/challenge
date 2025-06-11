@@ -1,2 +1,2 @@
 rootProject.name = 'challenge'
-include ':ms-products', ':ms-configserver', ':ms-inventory'
+include ':ms-products', ':ms-configserver', ':ms-audit'

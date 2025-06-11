@@ -1,0 +1,20 @@
+<component name="ProjectRunConfigurationManager">
+    <configuration default="false" name="ms-audit" type="Application" factoryName="Application">
+        <envs>
+            <env name="MS_CONF"
+                 value="file:$PROJECT_DIR$/configurations/application.yml,file:$PROJECT_DIR$/configurations/ms-audit-develop.yml"/>
+            <env name="PORT" value="8082"/>
+        </envs>
+        <option name="MAIN_CLASS_NAME" value="com.globallogic.audit.Application"/>
+        <module name="challenge.ms-audit.main"/>
+        <extension name="coverage">
+            <pattern>
+                <option name="PATTERN" value="com.globallogic.audit.*"/>
+                <option name="ENABLED" value="true"/>
+            </pattern>
+        </extension>
+        <method v="2">
+            <option name="Make" enabled="true"/>
+        </method>
+    </configuration>
+</component>
