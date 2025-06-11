@@ -1,8 +1,11 @@
 package com.globallogic.products.shared.exception;
 
 import com.globallogic.products.shared.dto.ErrorResponse;
+import com.globallogic.products.shared.dto.InputError;
+import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -29,5 +32,19 @@ public class GlobalExceptionHandler {
         ErrorResponse errorResponse = new ErrorResponse(errorCode, message);
         log.error("Exception: {} - {}", errorCode, message, e);
         return ResponseEntity.status(500).body(errorResponse);
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ErrorResponse> handleValidations(MethodArgumentNotValidException e) {
+        String errorCode = "VALIDATION_ERROR";
+        String message = "An error was found in the input data";
+
+        List<InputError> errors = e.getBindingResult().getFieldErrors().stream()
+                .map(fieldError -> new InputError(fieldError.getField(), fieldError.getDefaultMessage()))
+                .toList();
+
+        ErrorResponse errorResponse = new ErrorResponse(errorCode, message, errors);
+        log.error("Validation exception: {}", errorResponse);
+        return ResponseEntity.badRequest().body(errorResponse);
     }
 }
