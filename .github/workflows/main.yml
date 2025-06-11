@@ -34,3 +34,9 @@ jobs:
       - name: Gradle Build
         run: |
           ./gradlew clean build --no-daemon
+
+      - name: Unit Test
+        run: ./gradlew test
+
+      - name: Check test coverage
+        run: ./gradlew jacocoTestCoverageVerification
